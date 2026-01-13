@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOMUS｜大使館展示プロジェクト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --ink: #1f1a14;
+            --deep: #0b1220;
+            --gold: #c18a2b;
+            --gold-strong: #b6761f;
+            --sand: #f7f2ea;
+            --stone: #f3efe7;
+            --line: #e6ded2;
+        }
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background: radial-gradient(circle at top, #fff7e8 0%, #f7f2ea 45%, #f3efe7 100%);
+            color: var(--ink);
+        }
+        h1, h2, h3, h4, .serif {
+            font-family: 'Shippori Mincho', serif;
+            letter-spacing: 0.02em;
+        }
+        .hero-bg {
+            background:
+                radial-gradient(800px at 15% 10%, rgba(193, 138, 43, 0.22), transparent 60%),
+                radial-gradient(700px at 90% 5%, rgba(255, 255, 255, 0.08), transparent 60%),
+                linear-gradient(160deg, #0b1220 0%, #111827 55%, #0a0f1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 22px 22px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .section {
+            padding: 5rem 1.5rem;
+        }
+        .section-tight {
+            padding: 4rem 1.5rem;
+        }
+        .section-alt {
+            background: var(--stone);
+        }
+        .eyebrow {
+            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.65);
+        }
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: 0 24px 50px rgba(31, 26, 20, 0.08);
+        }
+        .card-soft {
+            background: #fffdfa;
+            border: 1px solid #efe6d9;
+            border-radius: 22px;
+            box-shadow: 0 20px 40px rgba(31, 26, 20, 0.06);
+        }
+        .card-dark {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+        }
+        .image-frame {
+            border-radius: 24px;
+            border: 1px solid var(--line);
+            box-shadow: 0 24px 50px rgba(31, 26, 20, 0.12);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #e0b35a 0%, #c48a2a 50%, #b6761f 100%);
+            color: #1b140a;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 0.9rem 2.2rem;
+            box-shadow: 0 14px 28px rgba(193, 138, 43, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 36px rgba(193, 138, 43, 0.45);
+        }
+        .btn-ghost {
+            background: linear-gradient(135deg, #e0b35a 0%, #c48a2a 50%, #b6761f 100%);
+            color: #1b140a;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 0.9rem 2.2rem;
+            box-shadow: 0 14px 28px rgba(193, 138, 43, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-ghost:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 36px rgba(193, 138, 43, 0.45);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal.delay-1 {
+            transition-delay: 0.12s;
+        }
+        .reveal.delay-2 {
+            transition-delay: 0.24s;
+        }
+        .reveal.delay-3 {
+            transition-delay: 0.36s;
+        }
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 1.5rem;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <section class="section bg-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div class="space-y-8 reveal">
+                <div>
+                    <p class="text-xs tracking-[0.4em] text-amber-700">ABOUT</p>
+                    <h2 class="text-3xl md:text-4xl font-bold serif mt-3">このプロジェクトについて</h2>
+                </div>
+                <div class="space-y-6 leading-relaxed text-base md:text-lg text-slate-700">
+                    <p>
+                        このたびFOMUSは、<br>
+                        バーレーン日本国大使館主催<br>
+                        <span class="font-bold border-b border-amber-400">「天皇誕生日祝賀レセプション」</span>にて、<br>
+                        日本の伝統工芸「枡」をテーマにした<br>
+                        展示ブースを出展することになりました。
+                    </p>
+                    <p>
+                        本イベントは、<br>
+                        中東地域の要人や各国関係者が集まる<br>
+                        格式ある公式外交行事です。
+                    </p>
+                    <p>
+                        日本文化を紹介する場として、<br>
+                        「枡」という文化を知ってもらう<br>
+                        非常に貴重な機会だと考えています。
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する</a>
+                    <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-ghost text-center">がっつり支援する</a>
+                </div>
+            </div>
+            <div class="reveal delay-1">
+                <img src="FOMUS枡.png" alt="FOMUSの枡" class="w-full max-w-md mx-auto aspect-square object-cover image-frame">
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div class="space-y-6 reveal">
+                <h3 class="text-2xl md:text-3xl font-bold serif border-l-4 border-amber-700 pl-4">この展示について</h3>
+                <p class="leading-relaxed text-slate-700">
+                    2024年・2025年と、<br>
+                    FOMUSとして世界25カ国以上を実際に訪れ、<br>
+                    現地に足を運び、直接会い、<br>
+                    時間をかけて関係を築いてきました。
+                </p>
+                <p class="leading-relaxed text-slate-700">
+                    その積み重ねの先に、<br>
+                    今回のバーレーン日本国大使館主催の<br>
+                    公式行事での展示という機会があります。
+                </p>
+                <p class="leading-relaxed text-slate-700">
+                    今回の展示に関して、<br>
+                    これまでの歩みや考え方に共感し、<br>
+                    「応援したい」と思ってくれる一人ひとりと<br>
+                    一緒につくりたいと考えています。
+                </p>
+                <p class="leading-relaxed text-slate-700">
+                    小さくても、誠実で、意味のある形で。<br>
+                    このプロジェクトは、個人の方との参加で進めます。
+                </p>
+                <p class="text-xs text-slate-500">※ 法人スポンサーの募集は行っていません</p>
+            </div>
+            <div class="reveal delay-1">
+                <img src="プロフィール.png" alt="プロフィール写真" class="w-full max-w-md mx-auto aspect-square object-cover image-frame">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-tight">
+        <div class="max-w-4xl mx-auto">
+            <div class="card-soft p-8 md:p-12 reveal">
+                <h3 class="text-2xl md:text-3xl font-bold serif border-l-4 border-amber-600 pl-4">参加概要</h3>
+                <div class="mt-8 grid md:grid-cols-2 gap-8 text-slate-700 text-lg md:text-xl">
+                    <div class="space-y-2">
+                        <p class="font-bold text-slate-900">参加費</p>
+                        <p>支援｜5,000円</p>
+                        <p>がっつり支援｜10,000円</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="font-bold text-slate-900">締切</p>
+                        <p class="font-bold text-red-700">準備の都合上、2月3日まで</p>
+                    </div>
+                </div>
+                <p class="mt-6 text-sm text-slate-500">※ 金額による優劣や序列は設けていません</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-white">
+        <div class="max-w-5xl mx-auto text-center reveal">
+            <div class="inline-flex items-center gap-3 text-amber-700 text-sm tracking-[0.35em]">BENEFITS</div>
+            <h3 class="text-3xl font-bold serif mt-4">参加者特典（共通）</h3>
+            <p class="mt-6 leading-relaxed text-slate-700">
+                本プロジェクトにご参加いただいた方のお名前を、<br>
+                <span class="font-bold text-lg">当日のFOMUS「枡」展示ブース内に掲載します。</span>
+            </p>
+        </div>
+        <div class="max-w-6xl mx-auto mt-10 grid md:grid-cols-3 gap-6">
+            <div class="card p-6 text-left reveal">
+                <div class="flex items-center gap-3 mb-4 text-amber-700">
+                    <i data-lucide="badge-check" class="w-6 h-6"></i>
+                    <h4 class="font-bold">名前掲載</h4>
+                </div>
+                <p class="text-slate-700">展示ブースに参加者名を統一フォーマットで掲載します。</p>
+            </div>
+            <div class="card p-6 text-left reveal delay-1">
+                <div class="flex items-center gap-3 mb-4 text-amber-700">
+                    <i data-lucide="user" class="w-6 h-6"></i>
+                    <h4 class="font-bold">本名・ニックネーム可</h4>
+                </div>
+                <p class="text-slate-700">匿名希望の方も対応しますのでご安心ください。</p>
+            </div>
+            <div class="card p-6 text-left reveal delay-2">
+                <div class="flex items-center gap-3 mb-4 text-amber-700">
+                    <i data-lucide="camera" class="w-6 h-6"></i>
+                    <h4 class="font-bold">報告共有</h4>
+                </div>
+                <p class="text-slate-700">展示後に写真と簡単な報告をお届けします。</p>
+            </div>
+        </div>
+        <p class="max-w-3xl mx-auto text-center mt-8 text-slate-700 reveal delay-3">
+            海外の大使館公式行事という特別な場に、<br>
+            「参加者」として名前が残る形です。
+        </p>
+    </section>
+
+    <section id="plans" class="section hero-bg text-white">
+        <div class="max-w-6xl mx-auto reveal">
+            <div class="text-center mb-12">
+                <p class="text-xs tracking-[0.35em] text-white/70">PLANS</p>
+                <h2 class="text-3xl md:text-4xl font-bold serif mt-4">支援プランについて</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-8 flex flex-col text-slate-900 reveal">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold serif mb-2">支援</h3>
+                        <p class="text-3xl font-bold">5,000円</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-slate-700">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+                            <span>展示ブースへの名前掲載</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+                            <span>展示後の写真・簡単な報告共有</span>
+                        </li>
+                    </ul>
+                    <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する</a>
+                </div>
+
+                <div class="card-dark p-8 flex flex-col relative border border-amber-500/40 reveal delay-1">
+                    <div class="absolute top-6 right-6 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</div>
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold serif mb-2 text-amber-300">がっつり支援</h3>
+                        <p class="text-3xl font-bold text-white">10,000円</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-white/85">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                            <span>展示ブースへの名前掲載（扱いは同一）</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                            <span>展示後の写真・簡単な報告共有</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white/10 p-3 rounded-2xl">
+                            <i data-lucide="star" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                            <span class="font-bold text-amber-100">展示を終えての振り返り共有<br>
+                                <span class="text-sm font-normal text-white/70">（文章または音声／非公開投稿予定）</span>
+                            </span>
+                        </li>
+                    </ul>
+                    <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-primary text-center">がっつり支援で参加する</a>
+                </div>
+            </div>
+            <p class="text-center mt-6 text-sm text-white/60">※展示会場での掲載内容・扱いに違いはありません</p>
+        </div>
+    </section>
+
+    <section class="section bg-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+            <div class="card p-8 reveal">
+                <h4 class="text-lg font-bold serif flex items-center gap-2 text-amber-700">
+                    <i data-lucide="coins" class="w-5 h-5"></i>
+                    集まった資金について
+                </h4>
+                <p class="mt-4 text-sm text-slate-600">お預かりした参加費は、すべて以下の用途に使用します。</p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 text-slate-700">
+                    <li>枡展示用の制作・準備</li>
+                    <li>展示装飾・パネル制作</li>
+                    <li>現地での設営・運営費用</li>
+                </ul>
+                <p class="mt-4 text-xs text-slate-500">※ 本プロジェクトは利益目的ではありません。</p>
+            </div>
+
+            <div class="card p-8 reveal delay-1">
+                <h4 class="text-lg font-bold serif flex items-center gap-2 text-amber-700">
+                    <i data-lucide="arrow-right-circle" class="w-5 h-5"></i>
+                    参加後の流れ
+                </h4>
+                <ol class="relative border-l border-slate-200 ml-3 mt-6">
+                    <li class="mb-6 ml-6">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                            <span class="text-amber-800 text-xs font-bold">1</span>
+                        </span>
+                        <h5 class="font-bold text-slate-900">決済完了</h5>
+                        <p class="text-sm text-slate-500">Stripeにてお支払い</p>
+                    </li>
+                    <li class="mb-6 ml-6">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                            <span class="text-amber-800 text-xs font-bold">2</span>
+                        </span>
+                        <h5 class="font-bold text-slate-900">掲載名の確認</h5>
+                        <p class="text-sm text-slate-500">メール等にてご連絡します</p>
+                    </li>
+                    <li class="mb-6 ml-6">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-900 rounded-full -left-3 ring-4 ring-white">
+                            <span class="text-white text-xs font-bold">3</span>
+                        </span>
+                        <h5 class="font-bold text-slate-900">2026.2.8 イベント当日</h5>
+                        <p class="text-sm text-slate-500">展示ブースにお名前を掲載</p>
+                    </li>
+                    <li class="ml-6">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                            <span class="text-amber-800 text-xs font-bold">4</span>
+                        </span>
+                        <h5 class="font-bold text-slate-900">報告の共有</h5>
+                        <p class="text-sm text-slate-500">写真・報告レポートをお届け</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt text-center">
+        <div class="max-w-3xl mx-auto reveal">
+            <p class="text-xs tracking-[0.4em] text-amber-700">FINAL</p>
+            <h2 class="text-3xl md:text-4xl font-bold serif mt-4">
+                日本の伝統工芸「枡」を、<br>
+                海外の大使館公式行事へ。
+            </h2>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する (5,000円)</a>
+                <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-primary text-center">がっつり支援で参加する (10,000円)</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="px-6 pb-6">
+        <p class="max-w-5xl mx-auto text-xs text-slate-500">
+            本プロジェクトは、一般的なクラウドファンディングではありません。
+        </p>
+    </div>
+
+    <footer class="bg-slate-900 text-gray-400 py-12 px-6 text-sm">
+        <div class="max-w-5xl mx-auto">
+            <h4 class="font-bold text-white mb-4">注意事項</h4>
+            <ul class="list-disc pl-5 space-y-2 mb-10">
+                <li>本プロジェクトは個人参加限定です</li>
+                <li>掲載名は後日確認します</li>
+                <li>主催者・現地事情により内容が変更となる可能性があります</li>
+            </ul>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p>&copy; FOMUS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.12
+            };
+
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
