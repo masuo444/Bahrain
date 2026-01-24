@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOMUS｜大使館展示プロジェクト</title>
+    <title>FOMUS｜Embassy Exhibition Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,9 +139,51 @@
         .reveal.delay-3 {
             transition-delay: 0.36s;
         }
+        .lang-section {
+            display: none;
+        }
+        .lang-section.active {
+            display: block;
+        }
+        .lang-switcher {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 60;
+            display: flex;
+            gap: 0.4rem;
+            padding: 0.35rem;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 14px 30px rgba(31, 26, 20, 0.16);
+            backdrop-filter: blur(8px);
+        }
+        .lang-switcher button {
+            font-size: 0.8rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-weight: 600;
+            color: #6b7280;
+            transition: all 0.2s ease;
+        }
+        .lang-switcher button.active {
+            background: var(--deep);
+            color: #ffffff;
+        }
+        .lang-switcher button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
         @media (max-width: 768px) {
             .section {
                 padding: 4rem 1.5rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .lang-switcher {
+                top: 0.75rem;
+                right: 0.75rem;
             }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -154,277 +196,547 @@
     </style>
 </head>
 <body class="antialiased">
+    <div class="lang-switcher" aria-label="Language switcher">
+        <button type="button" data-lang-switch="ja" class="active" aria-pressed="true">日本語</button>
+        <button type="button" data-lang-switch="en" aria-pressed="false">English</button>
+    </div>
 
-    <section class="section bg-white">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div class="space-y-8 reveal">
-                <div>
-                    <p class="text-xs tracking-[0.4em] text-amber-700">ABOUT</p>
-                    <h2 class="text-3xl md:text-4xl font-bold serif mt-3">このプロジェクトについて</h2>
-                </div>
-                <div class="space-y-6 leading-relaxed text-base md:text-lg text-slate-700">
-                    <p>
-                        このたびFOMUSは、<br>
-                        バーレーン日本国大使館主催<br>
-                        <span class="font-bold border-b border-amber-400">「天皇誕生日祝賀レセプション」</span>にて、<br>
-                        日本の伝統工芸「枡」をテーマにした<br>
-                        展示ブースを出展することになりました。
-                    </p>
-                    <p>
-                        本イベントは、<br>
-                        中東地域の要人や各国関係者が集まる<br>
-                        格式ある公式外交行事です。
-                    </p>
-                    <p>
-                        日本文化を紹介する場として、<br>
-                        「枡」という文化を知ってもらう<br>
-                        非常に貴重な機会だと考えています。
-                    </p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する 5000円</a>
-                    <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-ghost text-center">がっつり支援する 10000円</a>
-                </div>
-            </div>
-            <div class="reveal delay-1">
-                <img src="FOMUS枡.png" alt="FOMUSの枡" class="w-full max-w-md mx-auto aspect-square object-cover image-frame">
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-alt">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-            <div class="space-y-6 reveal">
-                <h3 class="text-2xl md:text-3xl font-bold serif border-l-4 border-amber-700 pl-4">この展示について</h3>
-                <p class="leading-relaxed text-slate-700">
-                    2024年・2025年と、<br>
-                    FOMUSとして世界25カ国以上を実際に訪れ、<br>
-                    現地に足を運び、直接会い、<br>
-                    時間をかけて関係を築いてきました。
-                </p>
-                <p class="leading-relaxed text-slate-700">
-                    その積み重ねの先に、<br>
-                    今回のバーレーン日本国大使館主催の<br>
-                    公式行事での展示という機会があります。
-                </p>
-                <p class="leading-relaxed text-slate-700">
-                    今回の展示に関して、<br>
-                    これまでの歩みや考え方に共感し、<br>
-                    「応援したい」と思ってくれる一人ひとりと<br>
-                    一緒につくりたいと考えています。
-                </p>
-                <p class="leading-relaxed text-slate-700">
-                    小さくても、誠実で、意味のある形で。<br>
-                    このプロジェクトは、個人の方との参加で進めます。
-                </p>
-                <p class="text-xs text-slate-500">※ 法人スポンサーの募集は行っていません</p>
-            </div>
-            <div class="reveal delay-1">
-                <img src="profile.png" alt="プロフィール写真" class="w-full max-w-md mx-auto aspect-square object-cover image-frame">
-            </div>
-        </div>
-    </section>
-
-    <section class="section-tight">
-        <div class="max-w-4xl mx-auto">
-            <div class="card-soft p-8 md:p-12 reveal">
-                <h3 class="text-2xl md:text-3xl font-bold serif border-l-4 border-amber-600 pl-4">参加概要</h3>
-                <div class="mt-8 grid md:grid-cols-2 gap-8 text-slate-700 text-lg md:text-xl">
-                    <div class="space-y-2">
-                        <p class="font-bold text-slate-900">参加費</p>
-                        <p>支援｜5,000円</p>
-                        <p>がっつり支援｜10,000円</p>
+    <div class="lang-section active" data-lang="ja">
+        <section class="section bg-white">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div class="space-y-8 reveal">
+                    <div>
+                        <p class="text-xs tracking-[0.4em] text-amber-700">ABOUT</p>
+                        <h2 class="text-3xl md:text-4xl font-bold serif mt-3">このプロジェクトについて</h2>
                     </div>
-                    <div class="space-y-2">
-                        <p class="font-bold text-slate-900">締切</p>
-                        <p class="font-bold text-red-700">準備の都合上、2月3日まで</p>
+                    <div class="space-y-6 leading-relaxed text-base md:text-lg text-slate-700">
+                        <p>
+                            このたびFOMUSは、<br>
+                            バーレーン日本国大使館主催<br>
+                            <span class="font-bold border-b border-amber-400">「天皇誕生日祝賀レセプション」</span>にて、<br>
+                            日本の伝統工芸「枡」をテーマにした<br>
+                            展示ブースを出展することになりました。
+                        </p>
+                        <p>
+                            本イベントは、<br>
+                            中東地域の要人や各国関係者が集まる<br>
+                            格式ある公式外交行事です。
+                        </p>
+                        <p>
+                            日本文化を紹介する場として、<br>
+                            「枡」という文化を知ってもらう<br>
+                            非常に貴重な機会だと考えています。
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する 5000円</a>
+                        <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-ghost text-center">がっつり支援する 10000円</a>
                     </div>
                 </div>
-                <p class="mt-6 text-sm text-slate-500">※ 金額による優劣や序列は設けていません</p>
+                <div class="reveal delay-1">
+                    <img src="FOMUS枡.png" alt="FOMUSの枡" class="w-full max-w-md mx-auto aspect-square object-cover image-frame">
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section bg-white">
-        <div class="max-w-5xl mx-auto text-center reveal">
-            <div class="inline-flex items-center gap-3 text-amber-700 text-sm tracking-[0.35em]">BENEFITS</div>
-            <h3 class="text-3xl font-bold serif mt-4">参加者特典（共通）</h3>
-            <p class="mt-6 leading-relaxed text-slate-700">
-                本プロジェクトにご参加いただいた方のお名前を、<br>
-                <span class="font-bold text-lg">当日のFOMUS「枡」展示ブース内に掲載します。</span>
+        <section class="section section-alt">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                <div class="space-y-6 reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold serif border-l-4 border-amber-700 pl-4">この展示について</h3>
+                    <p class="leading-relaxed text-slate-700">
+                        2024年・2025年と、<br>
+                        FOMUSとして世界25カ国以上を実際に訪れ、<br>
+                        現地に足を運び、直接会い、<br>
+                        時間をかけて関係を築いてきました。
+                    </p>
+                    <p class="leading-relaxed text-slate-700">
+                        その積み重ねの先に、<br>
+                        今回のバーレーン日本国大使館主催の<br>
+                        公式行事での展示という機会があります。
+                    </p>
+                    <p class="leading-relaxed text-slate-700">
+                        今回の展示に関して、<br>
+                        これまでの歩みや考え方に共感し、<br>
+                        「応援したい」と思ってくれる一人ひとりと<br>
+                        みんなでつくりたいと考えています。
+                    </p>
+                    <p class="leading-relaxed text-slate-700">
+                        小さくても、誠実で、意味のある形で。<br>
+                        このプロジェクトは、個人の方とみんなで参加しながら進めます。
+                    </p>
+                    <p class="text-xs text-slate-500">※ 法人スポンサーの募集は行っていません</p>
+                </div>
+                <div class="reveal delay-1">
+                    <img src="profile.png" alt="プロフィール写真" class="w-full max-w-md mx-auto aspect-square object-cover image-frame">
+                </div>
+            </div>
+        </section>
+
+        <section class="section-tight">
+            <div class="max-w-4xl mx-auto">
+                <div class="card-soft p-8 md:p-12 reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold serif border-l-4 border-amber-600 pl-4">参加概要</h3>
+                    <div class="mt-8 grid md:grid-cols-2 gap-8 text-slate-700 text-lg md:text-xl">
+                        <div class="space-y-2">
+                            <p class="font-bold text-slate-900">参加費</p>
+                            <p>支援｜5,000円</p>
+                            <p>がっつり支援｜10,000円</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="font-bold text-slate-900">締切</p>
+                            <p class="font-bold text-red-700">準備の都合上、2月3日まで</p>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-sm text-slate-500">※ 金額による優劣や序列は設けていません</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-white">
+            <div class="max-w-5xl mx-auto text-center reveal">
+                <div class="inline-flex items-center gap-3 text-amber-700 text-sm tracking-[0.35em]">BENEFITS</div>
+                <h3 class="text-3xl font-bold serif mt-4">参加者特典（共通）</h3>
+                <p class="mt-6 leading-relaxed text-slate-700">
+                    本プロジェクトにご参加いただいた方のお名前を、<br>
+                    <span class="font-bold text-lg">当日のFOMUS「枡」展示ブース内に掲載します。</span>
+                </p>
+            </div>
+            <div class="max-w-6xl mx-auto mt-10 grid md:grid-cols-3 gap-6">
+                <div class="card p-6 text-left reveal">
+                    <div class="flex items-center gap-3 mb-4 text-amber-700">
+                        <i data-lucide="badge-check" class="w-6 h-6"></i>
+                        <h4 class="font-bold">名前掲載</h4>
+                    </div>
+                    <p class="text-slate-700">展示ブースに参加者名を統一フォーマットで掲載します。</p>
+                </div>
+                <div class="card p-6 text-left reveal delay-1">
+                    <div class="flex items-center gap-3 mb-4 text-amber-700">
+                        <i data-lucide="user" class="w-6 h-6"></i>
+                        <h4 class="font-bold">本名・ニックネーム可</h4>
+                    </div>
+                    <p class="text-slate-700">匿名希望の方も対応しますのでご安心ください。</p>
+                </div>
+                <div class="card p-6 text-left reveal delay-2">
+                    <div class="flex items-center gap-3 mb-4 text-amber-700">
+                        <i data-lucide="camera" class="w-6 h-6"></i>
+                        <h4 class="font-bold">報告共有</h4>
+                    </div>
+                    <p class="text-slate-700">展示後に写真と簡単な報告をお届けします。</p>
+                </div>
+            </div>
+            <p class="max-w-3xl mx-auto text-center mt-8 text-slate-700 reveal delay-3">
+                海外の大使館公式行事という特別な場に、<br>
+                「参加者」として名前が残る形です。
             </p>
-        </div>
-        <div class="max-w-6xl mx-auto mt-10 grid md:grid-cols-3 gap-6">
-            <div class="card p-6 text-left reveal">
-                <div class="flex items-center gap-3 mb-4 text-amber-700">
-                    <i data-lucide="badge-check" class="w-6 h-6"></i>
-                    <h4 class="font-bold">名前掲載</h4>
-                </div>
-                <p class="text-slate-700">展示ブースに参加者名を統一フォーマットで掲載します。</p>
-            </div>
-            <div class="card p-6 text-left reveal delay-1">
-                <div class="flex items-center gap-3 mb-4 text-amber-700">
-                    <i data-lucide="user" class="w-6 h-6"></i>
-                    <h4 class="font-bold">本名・ニックネーム可</h4>
-                </div>
-                <p class="text-slate-700">匿名希望の方も対応しますのでご安心ください。</p>
-            </div>
-            <div class="card p-6 text-left reveal delay-2">
-                <div class="flex items-center gap-3 mb-4 text-amber-700">
-                    <i data-lucide="camera" class="w-6 h-6"></i>
-                    <h4 class="font-bold">報告共有</h4>
-                </div>
-                <p class="text-slate-700">展示後に写真と簡単な報告をお届けします。</p>
-            </div>
-        </div>
-        <p class="max-w-3xl mx-auto text-center mt-8 text-slate-700 reveal delay-3">
-            海外の大使館公式行事という特別な場に、<br>
-            「参加者」として名前が残る形です。
-        </p>
-    </section>
+        </section>
 
-    <section id="plans" class="section hero-bg text-white">
-        <div class="max-w-6xl mx-auto reveal">
-            <div class="text-center mb-12">
-                <p class="text-xs tracking-[0.35em] text-white/70">PLANS</p>
-                <h2 class="text-3xl md:text-4xl font-bold serif mt-4">支援プランについて</h2>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card p-8 flex flex-col text-slate-900 reveal">
-                    <div class="mb-6">
-                        <h3 class="text-2xl font-bold serif mb-2">支援</h3>
-                        <p class="text-3xl font-bold">5,000円</p>
+        <section id="plans" class="section hero-bg text-white">
+            <div class="max-w-6xl mx-auto reveal">
+                <div class="text-center mb-12">
+                    <p class="text-xs tracking-[0.35em] text-white/70">PLANS</p>
+                    <h2 class="text-3xl md:text-4xl font-bold serif mt-4">支援プランについて</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card p-8 flex flex-col text-slate-900 reveal">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold serif mb-2">支援</h3>
+                            <p class="text-3xl font-bold">5,000円</p>
+                        </div>
+                        <ul class="space-y-4 mb-8 flex-grow text-slate-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+                                <span>展示ブースへの名前掲載</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+                                <span>展示後の写真・簡単な報告共有</span>
+                            </li>
+                        </ul>
+                        <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する 5000円</a>
                     </div>
-                    <ul class="space-y-4 mb-8 flex-grow text-slate-700">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
-                            <span>展示ブースへの名前掲載</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
-                            <span>展示後の写真・簡単な報告共有</span>
-                        </li>
+
+                    <div class="card-dark p-8 flex flex-col relative border border-amber-500/40 reveal delay-1">
+                        <div class="absolute top-6 right-6 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</div>
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold serif mb-2 text-amber-300">がっつり支援</h3>
+                            <p class="text-3xl font-bold text-white">10,000円</p>
+                        </div>
+                        <ul class="space-y-4 mb-8 flex-grow text-white/85">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                                <span>展示ブースへの名前掲載（扱いは同一）</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                                <span>展示後の写真・簡単な報告共有</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-white/10 p-3 rounded-2xl">
+                                <i data-lucide="star" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                                <span class="font-bold text-amber-100">展示を終えての振り返り共有<br>
+                                    <span class="text-sm font-normal text-white/70">（文章または音声／非公開投稿予定）</span>
+                                </span>
+                            </li>
+                        </ul>
+                        <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-primary text-center">がっつり支援で参加する 10000円</a>
+                    </div>
+                </div>
+                <p class="text-center mt-6 text-sm text-white/60">※展示会場での掲載内容・扱いに違いはありません</p>
+            </div>
+        </section>
+
+        <section class="section bg-white">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+                <div class="card p-8 reveal">
+                    <h4 class="text-lg font-bold serif flex items-center gap-2 text-amber-700">
+                        <i data-lucide="coins" class="w-5 h-5"></i>
+                        集まった資金について
+                    </h4>
+                    <p class="mt-4 text-sm text-slate-600">お預かりした参加費は、すべて以下の用途に使用します。</p>
+                    <ul class="list-disc pl-5 mt-4 space-y-2 text-slate-700">
+                        <li>枡展示用の制作・準備</li>
+                        <li>展示装飾・パネル制作</li>
+                        <li>現地での設営・運営費用</li>
                     </ul>
-                    <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する 5000円</a>
+                    <p class="mt-4 text-xs text-slate-500">※ 本プロジェクトは利益目的ではありません。</p>
                 </div>
 
-                <div class="card-dark p-8 flex flex-col relative border border-amber-500/40 reveal delay-1">
-                    <div class="absolute top-6 right-6 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</div>
-                    <div class="mb-6">
-                        <h3 class="text-2xl font-bold serif mb-2 text-amber-300">がっつり支援</h3>
-                        <p class="text-3xl font-bold text-white">10,000円</p>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-grow text-white/85">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
-                            <span>展示ブースへの名前掲載（扱いは同一）</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
-                            <span>展示後の写真・簡単な報告共有</span>
-                        </li>
-                        <li class="flex items-start gap-3 bg-white/10 p-3 rounded-2xl">
-                            <i data-lucide="star" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
-                            <span class="font-bold text-amber-100">展示を終えての振り返り共有<br>
-                                <span class="text-sm font-normal text-white/70">（文章または音声／非公開投稿予定）</span>
+                <div class="card p-8 reveal delay-1">
+                    <h4 class="text-lg font-bold serif flex items-center gap-2 text-amber-700">
+                        <i data-lucide="arrow-right-circle" class="w-5 h-5"></i>
+                        参加後の流れ
+                    </h4>
+                    <ol class="relative border-l border-slate-200 ml-3 mt-6">
+                        <li class="mb-6 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                                <span class="text-amber-800 text-xs font-bold">1</span>
                             </span>
+                            <h5 class="font-bold text-slate-900">決済完了</h5>
+                            <p class="text-sm text-slate-500">Stripeにてお支払い</p>
                         </li>
-                    </ul>
+                        <li class="mb-6 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                                <span class="text-amber-800 text-xs font-bold">2</span>
+                            </span>
+                            <h5 class="font-bold text-slate-900">掲載名の確認</h5>
+                            <p class="text-sm text-slate-500">メール等にてご連絡します</p>
+                        </li>
+                        <li class="mb-6 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-900 rounded-full -left-3 ring-4 ring-white">
+                                <span class="text-white text-xs font-bold">3</span>
+                            </span>
+                            <h5 class="font-bold text-slate-900">2026.2.8 イベント当日</h5>
+                            <p class="text-sm text-slate-500">展示ブースにお名前を掲載</p>
+                        </li>
+                        <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                                <span class="text-amber-800 text-xs font-bold">4</span>
+                            </span>
+                            <h5 class="font-bold text-slate-900">報告の共有</h5>
+                            <p class="text-sm text-slate-500">写真・報告レポートをお届け</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt text-center">
+            <div class="max-w-3xl mx-auto reveal">
+                <p class="text-xs tracking-[0.4em] text-amber-700">FINAL</p>
+                <h2 class="text-3xl md:text-4xl font-bold serif mt-4">
+                    日本の伝統工芸「枡」を、<br>
+                    海外の大使館公式行事へ。
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                    <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する 5000円</a>
                     <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-primary text-center">がっつり支援で参加する 10000円</a>
                 </div>
             </div>
-            <p class="text-center mt-6 text-sm text-white/60">※展示会場での掲載内容・扱いに違いはありません</p>
-        </div>
-    </section>
+        </section>
 
-    <section class="section bg-white">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
-            <div class="card p-8 reveal">
-                <h4 class="text-lg font-bold serif flex items-center gap-2 text-amber-700">
-                    <i data-lucide="coins" class="w-5 h-5"></i>
-                    集まった資金について
-                </h4>
-                <p class="mt-4 text-sm text-slate-600">お預かりした参加費は、すべて以下の用途に使用します。</p>
-                <ul class="list-disc pl-5 mt-4 space-y-2 text-slate-700">
-                    <li>枡展示用の制作・準備</li>
-                    <li>展示装飾・パネル制作</li>
-                    <li>現地での設営・運営費用</li>
+        <div class="px-6 pb-6">
+            <p class="max-w-5xl mx-auto text-xs text-slate-500">
+                本プロジェクトは、一般的なクラウドファンディングではありません。
+            </p>
+        </div>
+
+        <footer class="bg-slate-900 text-gray-400 py-12 px-6 text-sm">
+            <div class="max-w-5xl mx-auto">
+                <h4 class="font-bold text-white mb-4">注意事項</h4>
+                <ul class="list-disc pl-5 space-y-2 mb-10">
+                    <li>本プロジェクトは個人参加限定です</li>
+                    <li>掲載名は後日確認します</li>
+                    <li>主催者・現地事情により内容が変更となる可能性があります</li>
                 </ul>
-                <p class="mt-4 text-xs text-slate-500">※ 本プロジェクトは利益目的ではありません。</p>
+                <div class="border-t border-gray-800 pt-8 text-center">
+                    <p>&copy; FOMUS</p>
+                </div>
             </div>
-
-            <div class="card p-8 reveal delay-1">
-                <h4 class="text-lg font-bold serif flex items-center gap-2 text-amber-700">
-                    <i data-lucide="arrow-right-circle" class="w-5 h-5"></i>
-                    参加後の流れ
-                </h4>
-                <ol class="relative border-l border-slate-200 ml-3 mt-6">
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
-                            <span class="text-amber-800 text-xs font-bold">1</span>
-                        </span>
-                        <h5 class="font-bold text-slate-900">決済完了</h5>
-                        <p class="text-sm text-slate-500">Stripeにてお支払い</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
-                            <span class="text-amber-800 text-xs font-bold">2</span>
-                        </span>
-                        <h5 class="font-bold text-slate-900">掲載名の確認</h5>
-                        <p class="text-sm text-slate-500">メール等にてご連絡します</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-900 rounded-full -left-3 ring-4 ring-white">
-                            <span class="text-white text-xs font-bold">3</span>
-                        </span>
-                        <h5 class="font-bold text-slate-900">2026.2.8 イベント当日</h5>
-                        <p class="text-sm text-slate-500">展示ブースにお名前を掲載</p>
-                    </li>
-                    <li class="ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
-                            <span class="text-amber-800 text-xs font-bold">4</span>
-                        </span>
-                        <h5 class="font-bold text-slate-900">報告の共有</h5>
-                        <p class="text-sm text-slate-500">写真・報告レポートをお届け</p>
-                    </li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-alt text-center">
-        <div class="max-w-3xl mx-auto reveal">
-            <p class="text-xs tracking-[0.4em] text-amber-700">FINAL</p>
-            <h2 class="text-3xl md:text-4xl font-bold serif mt-4">
-                日本の伝統工芸「枡」を、<br>
-                海外の大使館公式行事へ。
-            </h2>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-                <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">支援で参加する 5000円</a>
-                <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-primary text-center">がっつり支援で参加する 10000円</a>
-            </div>
-        </div>
-    </section>
-
-    <div class="px-6 pb-6">
-        <p class="max-w-5xl mx-auto text-xs text-slate-500">
-            本プロジェクトは、一般的なクラウドファンディングではありません。
-        </p>
+        </footer>
     </div>
 
-    <footer class="bg-slate-900 text-gray-400 py-12 px-6 text-sm">
-        <div class="max-w-5xl mx-auto">
-            <h4 class="font-bold text-white mb-4">注意事項</h4>
-            <ul class="list-disc pl-5 space-y-2 mb-10">
-                <li>本プロジェクトは個人参加限定です</li>
-                <li>掲載名は後日確認します</li>
-                <li>主催者・現地事情により内容が変更となる可能性があります</li>
-            </ul>
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p>&copy; FOMUS</p>
+    <div class="lang-section" data-lang="en">
+        <section class="section bg-white">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div class="space-y-8 reveal">
+                    <div>
+                        <p class="text-xs tracking-[0.4em] text-amber-700">ABOUT</p>
+                        <h2 class="text-3xl md:text-4xl font-bold serif mt-3">About This Project</h2>
+                    </div>
+                    <div class="space-y-6 leading-relaxed text-base md:text-lg text-slate-700">
+                        <p>
+                            FOMUS will present an exhibition booth themed on the traditional craft “Masu”<br>
+                            at the <span class="font-bold border-b border-amber-400">Emperor’s Birthday Reception</span><br>
+                            hosted by the Embassy of Japan in Bahrain.
+                        </p>
+                        <p>
+                            This event is a formal diplomatic reception<br>
+                            gathering dignitaries and representatives from many countries.
+                        </p>
+                        <p>
+                            We see it as a rare chance to introduce the culture of “Masu”<br>
+                            to a global audience.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">Join with support 5,000 JPY</a>
+                        <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-ghost text-center">Support more 10,000 JPY</a>
+                    </div>
+                </div>
+                <div class="reveal delay-1">
+                    <img src="FOMUS枡.png" alt="FOMUS Masu" class="w-full max-w-md mx-auto aspect-square object-cover image-frame">
+                </div>
             </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                <div class="space-y-6 reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold serif border-l-4 border-amber-700 pl-4">About the Exhibition</h3>
+                    <p class="leading-relaxed text-slate-700">
+                        In 2024 and 2025, FOMUS visited over 25 countries in person—<br>
+                        meeting people on the ground and building relationships over time.
+                    </p>
+                    <p class="leading-relaxed text-slate-700">
+                        Those steps have led to the opportunity to exhibit<br>
+                        at this official event hosted by the Embassy of Japan in Bahrain.
+                    </p>
+                    <p class="leading-relaxed text-slate-700">
+                        For this exhibition, we want to build it together with everyone<br>
+                        who resonates with our journey and wants to support it.
+                    </p>
+                    <p class="leading-relaxed text-slate-700">
+                        Small, sincere, and meaningful.<br>
+                        This project moves forward with individual participants, created together by everyone.
+                    </p>
+                    <p class="text-xs text-slate-500">* We are not seeking corporate sponsors.</p>
+                </div>
+                <div class="reveal delay-1">
+                    <img src="profile.png" alt="Profile photo" class="w-full max-w-md mx-auto aspect-square object-cover image-frame">
+                </div>
+            </div>
+        </section>
+
+        <section class="section-tight">
+            <div class="max-w-4xl mx-auto">
+                <div class="card-soft p-8 md:p-12 reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold serif border-l-4 border-amber-600 pl-4">Participation Overview</h3>
+                    <div class="mt-8 grid md:grid-cols-2 gap-8 text-slate-700 text-lg md:text-xl">
+                        <div class="space-y-2">
+                            <p class="font-bold text-slate-900">Support</p>
+                            <p>Support | 5,000 JPY</p>
+                            <p>Full support | 10,000 JPY</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="font-bold text-slate-900">Deadline</p>
+                            <p class="font-bold text-red-700">By February 3 (due to preparations)</p>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-sm text-slate-500">* There is no hierarchy based on amount.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-white">
+            <div class="max-w-5xl mx-auto text-center reveal">
+                <div class="inline-flex items-center gap-3 text-amber-700 text-sm tracking-[0.35em]">BENEFITS</div>
+                <h3 class="text-3xl font-bold serif mt-4">Participant Benefits (Shared)</h3>
+                <p class="mt-6 leading-relaxed text-slate-700">
+                    Names of participants will be listed<br>
+                    <span class="font-bold text-lg">inside the FOMUS “Masu” exhibition booth on the day.</span>
+                </p>
+            </div>
+            <div class="max-w-6xl mx-auto mt-10 grid md:grid-cols-3 gap-6">
+                <div class="card p-6 text-left reveal">
+                    <div class="flex items-center gap-3 mb-4 text-amber-700">
+                        <i data-lucide="badge-check" class="w-6 h-6"></i>
+                        <h4 class="font-bold">Name listed</h4>
+                    </div>
+                    <p class="text-slate-700">Your name will be listed in a unified format at the booth.</p>
+                </div>
+                <div class="card p-6 text-left reveal delay-1">
+                    <div class="flex items-center gap-3 mb-4 text-amber-700">
+                        <i data-lucide="user" class="w-6 h-6"></i>
+                        <h4 class="font-bold">Real name or nickname</h4>
+                    </div>
+                    <p class="text-slate-700">Anonymous requests are also supported.</p>
+                </div>
+                <div class="card p-6 text-left reveal delay-2">
+                    <div class="flex items-center gap-3 mb-4 text-amber-700">
+                        <i data-lucide="camera" class="w-6 h-6"></i>
+                        <h4 class="font-bold">Post-event report</h4>
+                    </div>
+                    <p class="text-slate-700">Photos and a brief report will be shared afterward.</p>
+                </div>
+            </div>
+            <p class="max-w-3xl mx-auto text-center mt-8 text-slate-700 reveal delay-3">
+                This is a rare opportunity to have your name included<br>
+                at an official embassy event overseas.
+            </p>
+        </section>
+
+        <section id="plans-en" class="section hero-bg text-white">
+            <div class="max-w-6xl mx-auto reveal">
+                <div class="text-center mb-12">
+                    <p class="text-xs tracking-[0.35em] text-white/70">PLANS</p>
+                    <h2 class="text-3xl md:text-4xl font-bold serif mt-4">Support Plans</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card p-8 flex flex-col text-slate-900 reveal">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold serif mb-2">Support</h3>
+                            <p class="text-3xl font-bold">5,000 JPY</p>
+                        </div>
+                        <ul class="space-y-4 mb-8 flex-grow text-slate-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+                                <span>Name listed in the exhibition booth</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+                                <span>Photos and a brief report after the exhibition</span>
+                            </li>
+                        </ul>
+                        <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">Join with support 5,000 JPY</a>
+                    </div>
+
+                    <div class="card-dark p-8 flex flex-col relative border border-amber-500/40 reveal delay-1">
+                        <div class="absolute top-6 right-6 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</div>
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold serif mb-2 text-amber-300">Full support</h3>
+                            <p class="text-3xl font-bold text-white">10,000 JPY</p>
+                        </div>
+                        <ul class="space-y-4 mb-8 flex-grow text-white/85">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                                <span>Name listed in the booth (same treatment)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                                <span>Photos and a brief report after the exhibition</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-white/10 p-3 rounded-2xl">
+                                <i data-lucide="star" class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5"></i>
+                                <span class="font-bold text-amber-100">Post-exhibition reflections<br>
+                                    <span class="text-sm font-normal text-white/70">(text or audio / planned as a private post)</span>
+                                </span>
+                            </li>
+                        </ul>
+                        <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-primary text-center">Support more 10,000 JPY</a>
+                    </div>
+                </div>
+                <p class="text-center mt-6 text-sm text-white/60">* Listing content and treatment are the same at the venue.</p>
+            </div>
+        </section>
+
+        <section class="section bg-white">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+                <div class="card p-8 reveal">
+                    <h4 class="text-lg font-bold serif flex items-center gap-2 text-amber-700">
+                        <i data-lucide="coins" class="w-5 h-5"></i>
+                        Use of funds
+                    </h4>
+                    <p class="mt-4 text-sm text-slate-600">All participation fees will be used for:</p>
+                    <ul class="list-disc pl-5 mt-4 space-y-2 text-slate-700">
+                        <li>Producing and preparing the “Masu” exhibition</li>
+                        <li>Decor and panel production</li>
+                        <li>On-site setup and operational costs</li>
+                    </ul>
+                    <p class="mt-4 text-xs text-slate-500">* This project is not for profit.</p>
+                </div>
+
+                <div class="card p-8 reveal delay-1">
+                    <h4 class="text-lg font-bold serif flex items-center gap-2 text-amber-700">
+                        <i data-lucide="arrow-right-circle" class="w-5 h-5"></i>
+                        What happens after joining
+                    </h4>
+                    <ol class="relative border-l border-slate-200 ml-3 mt-6">
+                        <li class="mb-6 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                                <span class="text-amber-800 text-xs font-bold">1</span>
+                            </span>
+                            <h5 class="font-bold text-slate-900">Payment complete</h5>
+                            <p class="text-sm text-slate-500">Payment via Stripe</p>
+                        </li>
+                        <li class="mb-6 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                                <span class="text-amber-800 text-xs font-bold">2</span>
+                            </span>
+                            <h5 class="font-bold text-slate-900">Confirm display name</h5>
+                            <p class="text-sm text-slate-500">We will contact you by email</p>
+                        </li>
+                        <li class="mb-6 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-900 rounded-full -left-3 ring-4 ring-white">
+                                <span class="text-white text-xs font-bold">3</span>
+                            </span>
+                            <h5 class="font-bold text-slate-900">2026.2.8 Event day</h5>
+                            <p class="text-sm text-slate-500">Your name will be displayed in the booth</p>
+                        </li>
+                        <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-100 rounded-full -left-3 ring-4 ring-white">
+                                <span class="text-amber-800 text-xs font-bold">4</span>
+                            </span>
+                            <h5 class="font-bold text-slate-900">Report shared</h5>
+                            <p class="text-sm text-slate-500">Photos and a brief report delivered</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt text-center">
+            <div class="max-w-3xl mx-auto reveal">
+                <p class="text-xs tracking-[0.4em] text-amber-700">FINAL</p>
+                <h2 class="text-3xl md:text-4xl font-bold serif mt-4">
+                    Bringing the traditional craft “Masu”<br>
+                    to an official embassy reception overseas.
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                    <a href="https://buy.stripe.com/5kQ9AUdfn5bL6K8d6r4ko0I" class="btn-primary text-center">Join with support 5,000 JPY</a>
+                    <a href="https://buy.stripe.com/28E9AUcbj33DfgEd6r4ko0J" class="btn-primary text-center">Support more 10,000 JPY</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="px-6 pb-6">
+            <p class="max-w-5xl mx-auto text-xs text-slate-500">
+                This project is not a typical crowdfunding campaign.
+            </p>
         </div>
-    </footer>
+
+        <footer class="bg-slate-900 text-gray-400 py-12 px-6 text-sm">
+            <div class="max-w-5xl mx-auto">
+                <h4 class="font-bold text-white mb-4">Notes</h4>
+                <ul class="list-disc pl-5 space-y-2 mb-10">
+                    <li>Participation is limited to individuals</li>
+                    <li>Display names will be confirmed later</li>
+                    <li>Details may change due to organizers or local circumstances</li>
+                </ul>
+                <div class="border-t border-gray-800 pt-8 text-center">
+                    <p>&copy; FOMUS</p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script>
         lucide.createIcons();
@@ -447,6 +759,48 @@
 
             document.querySelectorAll('.reveal').forEach(element => {
                 observer.observe(element);
+            });
+
+            const langSections = document.querySelectorAll('.lang-section');
+            const langButtons = document.querySelectorAll('[data-lang-switch]');
+            const titleMap = {
+                ja: 'FOMUS｜大使館展示プロジェクト',
+                en: 'FOMUS | Embassy Exhibition Project'
+            };
+
+            const setLang = (lang) => {
+                langSections.forEach(section => {
+                    section.classList.toggle('active', section.dataset.lang === lang);
+                });
+                langButtons.forEach(button => {
+                    const isActive = button.dataset.langSwitch === lang;
+                    button.classList.toggle('active', isActive);
+                    button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                });
+                document.documentElement.lang = lang;
+                if (titleMap[lang]) {
+                    document.title = titleMap[lang];
+                }
+                localStorage.setItem('lang', lang);
+                const activeSection = document.querySelector(`.lang-section[data-lang="${lang}"]`);
+                if (activeSection) {
+                    activeSection.querySelectorAll('.reveal').forEach(element => {
+                        if (!element.classList.contains('visible')) {
+                            observer.observe(element);
+                        }
+                    });
+                }
+            };
+
+            const savedLang = localStorage.getItem('lang');
+            const browserLang = navigator.language && navigator.language.startsWith('ja') ? 'ja' : 'en';
+            const initialLang = savedLang || browserLang;
+            setLang(initialLang);
+
+            langButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    setLang(button.dataset.langSwitch);
+                });
             });
         });
     </script>
